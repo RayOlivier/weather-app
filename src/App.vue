@@ -24,7 +24,7 @@
     <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
 
-    <v-app-bar app color="indigo" dark>
+    <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
@@ -33,20 +33,12 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col class="text-center">
-            <!-- <v-tooltip left> -->
-            <!-- <template v-slot:activator="{ on }"> -->
-            <!-- <v-btn :href="source" icon large target="_blank" v-on="on">
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn> -->
             <router-view />
-            <!-- </template> -->
-            <!-- <span>Source</span> -->
-            <!-- </v-tooltip> -->
           </v-col>
         </v-row>
       </v-container>
     </v-main>
-    <v-footer color="indigo" app>
+    <v-footer color="secondary" app>
       <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
