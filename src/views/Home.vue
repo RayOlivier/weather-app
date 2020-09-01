@@ -1,44 +1,44 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HomePage />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
 
-    <input v-model="newZipcode" @submit="addZipcode" placeholder="enter zipcode" />
-    <button type="button" @click="addZipcode">Add City</button>
+    <v-text-field v-model="newZipcode" @submit="addZipcode" placeholder="enter zipcode" />
+    <v-btn class="primary" type="button" @click="addZipcode">Add City</v-btn>
 
     <div class="city-card-container">
       <CityCard v-for="zip in zipcodeList" :zipcode="zip" :key="zip" @delete="deleteCard" />
     </div>
   </div>
 </template>
-
 <script>
-import HomePage from '@/components/home-page.vue'; // @ is an alias to /src
-import CityCard from '@/components/city-card.vue';
+import CityCard from "@/components/city-card.vue";
+import { mapState } from "vuex";
+
 export default {
   components: {
-    HomePage,
-    CityCard,
+    CityCard
   },
   data() {
     return {
-      newZipcode: '',
-      zipcodeList: [75007, 75035],
+      newZipcode: ""
     };
   },
   methods: {
     addZipcode(event) {
       event.preventDefault();
-      console.log('this.newZipcode', this.newZipcode);
+      console.log("this.newZipcode", this.newZipcode);
       if (this.newZipcode.length === 5) {
         this.zipcodeList.push(parseInt(this.newZipcode));
-        this.newZipcode = '';
+        this.newZipcode = "";
       }
     },
     deleteCard(zip) {
-      this.zipcodeList.findIndex((x) => x === zip);
-    },
+      this.zipcodeList.findIndex(x => x === zip);
+    }
   },
+  computed: {
+    ...mapState(["zipcodeList"])
+  }
 };
 </script>
 

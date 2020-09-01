@@ -26,7 +26,7 @@
 
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Weather Buddy</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -38,7 +38,7 @@
         </v-row>
       </v-container>
     </v-main>
-    <v-footer color="secondary" app>
+    <v-footer color="primary" app>
       <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>

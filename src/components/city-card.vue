@@ -1,10 +1,13 @@
 <template>
-  <div class="card-container">
-    <button type="button">x</button>
+  <v-card class="card-container">
     <div v-if="!cityData">
       Loading...
     </div>
-    <div v-if="cityData" class="card">
+    <div v-if="cityData" class="card secondary">
+      <v-span>
+        <v-btn type="button">refresh</v-btn>
+        <v-btn type="button">x</v-btn>
+      </v-span>
       <h1>{{ cityData.name }}</h1>
       <div class="weather-icon">
         <weather-icon :iconName="cityData.icon"></weather-icon>
@@ -16,35 +19,36 @@
         <p>Max {{ cityData.maxTemp }}°</p>
         <p>Humidity {{ cityData.humidity }}%</p>
       </div>
+      <v-btn>More details</v-btn>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
-import { apiService } from '../services';
-import WeatherIcon from './weather-icon';
+import { apiService } from "../services";
+import WeatherIcon from "./weather-icon";
 export default {
-  name: 'CityCard',
+  name: "CityCard",
 
   props: {
     zipcode: {
       type: Number,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
-      cityData: undefined,
+      cityData: undefined
     };
   },
   async created() {
-    console.log('apiService', apiService);
+    console.log("apiService", apiService);
     this.cityData = await apiService.getWeatherFromZip(this.zipcode);
-    console.log('this.cityData', this.cityData);
+    console.log("this.cityData", this.cityData);
   },
   components: {
-    WeatherIcon,
-  },
+    WeatherIcon
+  }
 };
 </script>
 
@@ -52,7 +56,7 @@ export default {
 .card-container {
   width: 300px;
   border-radius: 8px;
-  background: lightblue;
+  background: accent;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
