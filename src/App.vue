@@ -51,7 +51,11 @@ export default {
   },
   data: () => ({
     drawer: null
-  })
+  }),
+  beforeCreate: function() {
+    console.log("before create");
+    this.$store.commit("initializeStore");
+  }
 };
 </script>
 

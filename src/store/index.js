@@ -1,21 +1,28 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { ADD_ZIPCODE } from "./mutation-types";
+import { ADD_ZIPCODE, INITIALIZE_STORE } from "./mutation-types";
 
 Vue.use(Vuex);
 
 const state = {
-  zipcodeList: [75007],
+  zipcodeList: [],
   cityDataList: []
 };
 const actions = {
-  addCityAction({ commit }, zipcode) {
+  addZipcodeAction({ commit }, zipcode) {
     commit(ADD_ZIPCODE, zipcode);
   }
 };
 const mutations = {
   [ADD_ZIPCODE](state, zipcode) {
     state.zipcodeList.push(zipcode);
+    localStorage.setItem("zipcodeList", JSON.stringify(state.zipcodeList));
+  },
+  [INITIALIZE_STORE](state) {
+    console.log("localStorage.getItem(zipcodeList)", localStorage.getItem("zipcodeList"));
+    if (localStorage.getItem("zipcodeList")) {
+      state.zipcodeList = [...JSON.parse(localStorage.getItem("zipcodeList"))];
+    }
   }
 };
 const getters = {};
