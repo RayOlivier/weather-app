@@ -6,7 +6,7 @@
     <div v-if="cityData" class="card">
       <v-row>
         <v-btn type="button"><v-icon>mdi-refresh</v-icon></v-btn>
-        <v-btn type="button">
+        <v-btn @click="deleteCity" type="button">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-row>
@@ -32,7 +32,9 @@ import { apiService } from "../services";
 import WeatherIcon from "./weather-icon";
 export default {
   name: "CityCard",
-
+  components: {
+    WeatherIcon
+  },
   props: {
     zipcode: {
       type: Number,
@@ -49,8 +51,10 @@ export default {
     this.cityData = await apiService.getWeatherFromZip(this.zipcode);
     // console.log("this.cityData", this.cityData);
   },
-  components: {
-    WeatherIcon
+  methods: {
+    deleteCity() {
+      this.$store.dispatch("deleteZipcodeAction", this.zipcode);
+    }
   }
 };
 </script>

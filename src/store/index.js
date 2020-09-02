@@ -11,6 +11,9 @@ const state = {
 const actions = {
   addZipcodeAction({ commit }, zipcode) {
     commit(ADD_ZIPCODE, zipcode);
+  },
+  deleteZipcodeAction({ commit }, zipcode) {
+    commit(DELETE_ZIPCODE, zipcode);
   }
 };
 const mutations = {
@@ -19,8 +22,11 @@ const mutations = {
     localStorage.setItem("zipcodeList", JSON.stringify(state.zipcodeList));
   },
   [DELETE_ZIPCODE](state, zipcode) {
-    state.zipcodeList.filter(z => z !== zipcode);
+    console.log("state.zipcodeList", state.zipcodeList, zipcode);
+    const newList = state.zipcodeList.filter(z => z !== zipcode);
+    state.zipcodeList = [...newList];
     localStorage.setItem("zipcodeList", JSON.stringify(state.zipcodeList));
+    console.log("state.zipcodeList", state.zipcodeList);
   },
   [INITIALIZE_STORE](state) {
     console.log("localStorage.getItem(zipcodeList)", localStorage.getItem("zipcodeList"));
