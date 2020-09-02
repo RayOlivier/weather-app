@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { ADD_ZIPCODE, INITIALIZE_STORE } from "./mutation-types";
+import { ADD_ZIPCODE, INITIALIZE_STORE, DELETE_ZIPCODE } from "./mutation-types";
 
 Vue.use(Vuex);
 
@@ -16,6 +16,10 @@ const actions = {
 const mutations = {
   [ADD_ZIPCODE](state, zipcode) {
     state.zipcodeList.push(zipcode);
+    localStorage.setItem("zipcodeList", JSON.stringify(state.zipcodeList));
+  },
+  [DELETE_ZIPCODE](state, zipcode) {
+    state.zipcodeList.filter(z => z !== zipcode);
     localStorage.setItem("zipcodeList", JSON.stringify(state.zipcodeList));
   },
   [INITIALIZE_STORE](state) {
