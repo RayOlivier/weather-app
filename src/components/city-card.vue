@@ -1,14 +1,17 @@
 <template>
-  <v-card class="card-container">
+  <v-card class="card-container secondary">
     <div v-if="!cityData">
       Loading...
     </div>
-    <div v-if="cityData" class="card secondary">
-      <v-span>
-        <v-btn type="button">refresh</v-btn>
-        <v-btn type="button">x</v-btn>
-      </v-span>
-      <h1>{{ cityData.name }}</h1>
+    <div v-if="cityData" class="card">
+      <v-row>
+        <v-btn type="button"><v-icon>mdi-refresh</v-icon></v-btn>
+        <v-btn type="button">
+          <v-icon>mdi-delete</v-icon>
+        </v-btn>
+      </v-row>
+      <v-card-title>{{ cityData.name }}</v-card-title>
+      <v-card-subtitle> {{ zipcode }} </v-card-subtitle>
       <div class="weather-icon">
         <weather-icon :iconName="cityData.icon"></weather-icon>
       </div>
@@ -42,9 +45,9 @@ export default {
     };
   },
   async created() {
-    console.log("apiService", apiService);
+    // console.log("apiService", apiService);
     this.cityData = await apiService.getWeatherFromZip(this.zipcode);
-    console.log("this.cityData", this.cityData);
+    // console.log("this.cityData", this.cityData);
   },
   components: {
     WeatherIcon
@@ -55,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   width: 300px;
-  border-radius: 8px;
+  padding: 8px;
   background: accent;
   display: flex;
   flex-direction: column;
