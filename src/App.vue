@@ -29,7 +29,7 @@
       <v-toolbar-title>Weather Buddy</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="main">
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col class="text-center">
@@ -60,6 +60,10 @@ export default {
 </script>
 
 <style scoped>
+.main {
+  background: rgb(128, 191, 233);
+  background: linear-gradient(29deg, rgba(128, 191, 233, 1) 0%, rgba(222, 250, 255, 1) 100%);
+}
 .router-link-exact-active {
   color: #42b983;
 }
