@@ -9,12 +9,15 @@
 import { format } from "date-fns";
 
 const dateDisplayFormat = "EEEE, MMMM do h:mm:ss";
+let interval;
 export default {
   name: "WelcomeText",
   created() {
     this.getTime();
   },
-
+  destroyed() {
+    clearInterval(interval);
+  },
   data() {
     return { currentTime: new Date() };
   },
@@ -23,7 +26,7 @@ export default {
       console.log("getting time");
       const unformattedTime = new Date();
       this.currentTime = format(unformattedTime, dateDisplayFormat);
-      setTimeout(this.getTime, 1000);
+      interval = setTimeout(this.getTime, 1000);
     }
   }
 };

@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <WelcomeText />
-    <AddCity />
+    <div class="welcome-row">
+      <WelcomeText />
+      <AddCity />
+    </div>
     <div class="city-card-container">
       <CityCard v-for="zip in zipcodeList" :zipcode="zip" :key="zip" @delete="deleteCard" />
     </div>
@@ -33,6 +35,13 @@ export default {
 </script>
 
 <style scoped>
+.welcome-row {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: left;
+  margin-bottom: 40px;
+}
 .city-card-container {
   display: flex;
   justify-content: space-around;
