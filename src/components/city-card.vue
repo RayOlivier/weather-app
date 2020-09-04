@@ -31,7 +31,7 @@
           <p>Max {{ cityData.maxTemp }}°</p>
           <p>Humidity {{ cityData.humidity }}%</p>
         </div>
-        <v-btn>More details</v-btn>
+        <v-btn :to="{ name: 'Details', params: { zipcode } }">More details</v-btn>
       </div>
     </div>
   </v-card>
@@ -58,7 +58,7 @@ export default {
   },
   async created() {
     // console.log("apiService", apiService);
-    this.cityData = await apiService.getWeatherFromZip(this.zipcode);
+    this.cityData = await apiService.getCurrentWeatherFromZip(this.zipcode);
     // console.log("this.cityData", this.cityData);
   },
   methods: {
