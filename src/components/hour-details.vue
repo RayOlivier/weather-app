@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="hour-container">
     <h4>{{ hourData.time }}</h4>
+    <p>{{ hourData.temp }}°</p>
     <weather-icon :iconName="hourData.icon"></weather-icon>
     <p>{{ hourData.weather }}</p>
     <!-- <p>rain: {{ hourData.rain }}</p> -->
@@ -23,4 +24,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.hour-container {
+  width: 100px;
+  margin: 15px 0;
+  border-right: solid thin dimgrey;
+
+  &:last-of-type {
+    border-right: none;
+  }
+}
+</style>

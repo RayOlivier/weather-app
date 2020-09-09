@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex flex-column align-center">
     <day-details v-for="day in sortedForcast" :dayData="day" :key="day.day"> test</day-details>
   </div>
 </template>
