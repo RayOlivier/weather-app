@@ -76,8 +76,9 @@ const parseResponse = response => {
         temp: hour.main.temp,
         time: formattedTime,
         day: formattedDay,
-        weather: hour.weather[0].main,
-        rain: hour.rain ? hour.rain : 0
+        weather: hour.weather[0].description,
+        icon: hour.weather[0].main,
+        rain: hour.rain ? hour.rain["3h"] : 0
       };
       weatherData.list.push(hourData);
     });
@@ -86,6 +87,7 @@ const parseResponse = response => {
     weatherData = {
       name: response.data.name,
       icon: response.data.weather[0].main,
+      weather: response.data.weather[0].description,
       minTemp: response.data.main.temp_min,
       maxTemp: response.data.main.temp_max,
       currentTemp: response.data.main.temp,

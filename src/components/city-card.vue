@@ -24,7 +24,7 @@
         <div class="weather-icon">
           <weather-icon :iconName="cityData.icon"></weather-icon>
         </div>
-        <h4>{{ cityData.icon }}</h4>
+        <h4>{{ cityData.weather }}</h4>
         <div>
           <p>Current {{ cityData.currentTemp }}°</p>
           <p>Min {{ cityData.minTemp }}°</p>
