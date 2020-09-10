@@ -5,7 +5,7 @@ import { format, fromUnixTime } from "date-fns";
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}&units=imperial
 // api.openweathermap.org/data/2.5/forecast/daily?zip={zip code}&appid={your api key}&units=imperial
 const apiBaseURL = "https://api.openweathermap.org/data/2.5/";
-const apiKey = "869f031608a9c1e07efa2201d8cf2d6d";
+const apiKey = process.env.API_KEY;
 
 const getCurrentWeatherFromZip = async function(zipcode) {
   try {
