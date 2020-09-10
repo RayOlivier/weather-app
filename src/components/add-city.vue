@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-center">
-    <v-text-field v-model="newZipcode" @submit="addZipcode" placeholder="enter zipcode" />
+    <v-text-field type="number" min="0" v-model="newZipcode" @submit="addZipcode" placeholder="enter zipcode" />
     <v-btn class="primary" type="button" @click="addZipcode">Add City</v-btn>
   </div>
 </template>
