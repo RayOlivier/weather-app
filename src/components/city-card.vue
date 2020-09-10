@@ -26,10 +26,10 @@
         </div>
         <h4>{{ cityData.weather }}</h4>
         <div>
-          <p>Current {{ cityData.currentTemp }}°</p>
-          <p>Min {{ cityData.minTemp }}°</p>
-          <p>Max {{ cityData.maxTemp }}°</p>
-          <p>Humidity {{ cityData.humidity }}%</p>
+          <p>Current: {{ cityData.currentTemp }}°</p>
+          <p>Min: {{ cityData.minTemp }}°</p>
+          <p>Max: {{ cityData.maxTemp }}°</p>
+          <p>Humidity: {{ cityData.humidity }}%</p>
         </div>
         <v-btn :to="{ name: 'Details', params: { zipcode } }">More details</v-btn>
       </div>
